@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+        $(function() {
+
+        });
+
+        var email = document.getElementById('Email');
+        var password = document.getElementById('Password');
+
+        $('#login_btn').click(function() {
+            $.ajax({
+            url: 'https://bca-app2.accuniq.com/login',
+            type: 'POST',
+            async: false,
+            data: {
+                "identifier": $('#email').val(),
+                "password": $('#password').val()
+            },
+            dataType: 'JSON',
+            success: function(){
+                    alert('로그인 성공');
+                    location.href = "index.html"
+            }, error: function(){
+                alert('로그인 정보 오류');
+            }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
