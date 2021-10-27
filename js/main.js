@@ -2,7 +2,7 @@ $(function(){
     var user = JSON.parse(localStorage.getItem("user"));
 
             $.ajax({
-                url: 'http://bca-proxy.accuniq.com/bodyComposition/find?query={%22where%22:{%22owner%22:' + user._id + '}}',
+                url: 'https://bca-proxy.accuniq.com/bodyComposition/find?query={%22where%22:{%22owner%22:' + user._id + '}}',
                 type: 'GET',
                 dataType: 'JSON',
                 xhrFields:{
