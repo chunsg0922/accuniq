@@ -12,7 +12,6 @@
     <script src="js/main.js?ver=1"></script>
     <title>메인페이지 : ACCUNIQ</title>
 
-    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -29,21 +28,18 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
+            <!-- Begin : Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
+                <!-- Begin : Nav bar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="position: fixed; width: 100%; z-index: 999;">
-
-                    <!-- Sidebar Toggle (Topbar) -->
                     <!-- ACCUNIQ 로고 -->
-                    <img src="img/accuniq_logo02.png" style="width: 140px; height: auto;">
+                    <a href="index.html">
+                    <img src="img/accuniq_logo02.png" style="width: 140px; height: auto;"></a>
 
-  
-                    <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                     
-                        <!-- Nav Item - User Information -->
+                        <!-- 네비게이션 바 메뉴 목록 -->
                         <li class="nav-item dropdown no-arrow">
                             
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -52,18 +48,19 @@
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
-                            <!-- Dropdown - User Information -->
+
+                            <!-- 드롭다운 메뉴 목록 -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="myinfo.html">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     내 정보
                                 </a>
-                                <a class="dropdown-item" href="#">
+<!--                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     설정
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                </a> -->
+                                <a class="dropdown-item" href="records.html">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     측정 기록
                                 </a>
@@ -73,118 +70,74 @@
                                     로그아웃
                                 </a>
                             </div>
+
                         </li>
 
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
+                <!-- End : Nav bar -->
 
-                <!-- Begin Page Content -->
+                <!-- Begin : Page Content -->
                 <div class="container-fluid" style="margin-top: 80px;">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">측정 기록</h1>
+                        <h1 class="h3 mb-0 text-gray-800"></h1>
 
                     </div>
+
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                        <!-- 체성분 측정 데이터 차트 part -->
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">측정 데이터</h6>
+                                </div>
                                 <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                E-Mail주소</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="info_email"></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
+
+                                    <h5 class="font-weight-bold" id="show_date" style="font-size: 18px; text-align: center;"></h4>
+                                    <h5 class="font-weight-bold" id="show_time" style="font-size: 14px; text-align: center;"></h5>
+                                    <hr>
+
+                                    <!-- 체중 표시 part -->
+                                    <h4 class="small font-weight-bold">체중</h4>
+                                    <h4 class="font-weight-bold" id="show_weight"></h4>
+                                    <div class="progress mb-4">
+                                        <div id="show_bar_weight" class="progress-bar bg-danger" role="progressbar" style="width: 20%" 
+                                        aria-valuenow="" aria-valuemin="" aria-valuemax=""></div>
+                                    </div>
+
+                                    <!-- 근육량 표시 part-->
+                                    <h4 class="small font-weight-bold">근육량</h4>
+                                    <h4 class=" font-weight-bold" id="show_muscle"></h4>
+                                    <div class="progress mb-4">
+                                        <div id="show_bar_muscle" class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                            aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+                                    <!-- 체지방 표시 part -->
+                                    <h4 class="small font-weight-bold" >체지방률</h4>
+                                        <h4 class="font-weight-bold" id="show_fatper"></h3>
+                                    <div class="progress mb-4">
+                                        <div id="show_bar_fatper" class="progress-bar" role="progressbar" style="width: 60%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                나이</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="info_age"></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Content Row -->
-
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <!-- 체성분 도넛 차트 part -->
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">체성분 측정</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">체성분 분석</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -193,66 +146,57 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                            <i class="fas fa-circle text-primary"></i> 체지방
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
+                                            <i class="fas fa-circle text-success"></i> 체수분
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fas fa-circle text-info"></i> 무기질
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-warning"></i> 단백질
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
-
-
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Approach -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">측정 결과 분석</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>이곳에는 데이터에 따른 비만 척도를 나타낼 생각입니다.</p>
-                                    <p class="mb-0">비만 척도에 따른 행동 요령 및 식이요법에 대한 간략한 정보를 나타낼 생각입니다.</p>
-                                </div>
+                    <!-- 측정 결과 분석 Part -->
+                    
+                        <!-- Approach -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">측정 결과 분석</h6>
                             </div>
-
+                            <div class="card-body">
+                                <h4 class="font-weight-bold" style="font-size: 23px; text-align: center;" id="show_bodyjudge"></h4>
+                                <hr>
+                                <h4 class="font-weight-normal" style="font-size: 16px;" id="show_tips"></h4>
+                            </div>
                         </div>
-                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
+            <!-- End : Main Content -->
 
-            <!-- Footer -->
+            <!-- Begin : Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Scott OJT 2021.11 </span>
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
+            <!-- End : Footer -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End : Content Wrapper -->
 
     </div>
-    <!-- End of Page Wrapper -->
+    <!-- End : Page Wrapper -->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -293,7 +237,6 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
