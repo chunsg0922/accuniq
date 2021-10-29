@@ -8,7 +8,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/login.html",
+    "start_url": "https://chunsg0922.github.io/accuniq/login.html",
     "display": "standalone",
     "background_color": "#beefff",
     "theme_color": "#beefff"
