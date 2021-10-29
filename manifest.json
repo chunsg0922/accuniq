@@ -6,6 +6,16 @@
             "src": "img/logoA.png",
             "sizes": "128x128",
             "type": "image/png"
+        },
+        {
+            "src": "img/logoA.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "img/logoA.png",
+            "sizes": "384x384",
+            "type": "image/png"
         }
     ],
     "start_url": "https://chunsg0922.github.io/accuniq/login.html",
