@@ -10861,19 +10861,19 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("http://www.accuniqs.co.kr/default/img/_designcoco/images/centerimage.jpg"); /*url("http://www.accuniqs.co.kr/default/img/_designcoco/images/centerimage.jpg/600x800");*/
+  background: url("../img/centerimage.jpg"); /*url("http://www.accuniqs.co.kr/default/img/_designcoco/images/centerimage.jpg/600x800");*/
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("http://www.accuniqs.co.kr/default/img/_designcoco/images/centerimage.jpg");
+  background: url("../img/centerimage.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-password-image {
-  background: url("http://www.accuniqs.co.kr/default/img/_designcoco/images/centerimage.jpg");
+  background: url("../img/centerimage.jpg");
   background-position: center;
   background-size: cover;
 }

@@ -3,7 +3,7 @@
  ****************/
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
-var body = JSON.parse(sessionStorage.getItem("bodyComposition_findone"));
+var body = JSON.parse(sessionStorage.getItem("body_one"));
 var fatmass = body.fatmass / body.weight * 100;
 var moisture = body.moisture / body.weight * 100;
 var mineral = body.mineral / body.weight * 100;
