@@ -26,6 +26,7 @@ function login(){
             type: 'GET',
             dataType: 'JSON',
             async: false,
+            cache: false,
             xhrFields:{
                 withCredentials: true
             },

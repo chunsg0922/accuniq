@@ -181,6 +181,7 @@
             canvasElement.hidden = false;
             outputContainer.hidden = false;
     
+            // 비디오 화면 크기
             canvasElement.height = video.videoHeight;
             canvasElement.width = video.videoWidth;
             canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
@@ -188,6 +189,8 @@
             var code = jsQR(imageData.data, imageData.width, imageData.height, {
                 inversionAttempts: "dontInvert",
             });
+
+            // QR코드 인식에 성공한 경우
             if (code) {
                 drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
                 drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
