@@ -1,8 +1,26 @@
 // 캐시 제목, 캐시 파일 선언
 const sCacheName = 'accuniq';
 const aFilesToCache = [
-    './', './index.html', './manifest.json', './login.html',
-    './img/logoA.png', './img/logoA(1).png', './img/logoA(2).png', './img/centerimage.jpg', './img/qr.png', '.img/accuniq_logo02.png'
+    './manifest.json', 
+    './index.html', 
+    './forgot-password.html',
+    './qr.html',
+    './register.html',
+    './login.html',
+    './img/logoA.png', 
+    './img/logoA(1).png', 
+    './img/logoA(2).png', 
+    './img/centerimage.jpg', 
+    './img/qr.png', 
+    './img/accuniq_logo02.png',
+    './js/jsQR.js',
+    './js/demo/chart-pie-demo.js',
+    './js/sb-admin-2.js',
+    './js/bootstrap.js',
+    './js/login.js',
+    './js/main.js',
+    './js/myinfo.js',
+    './css/sb-admin-2.css'
 ];
 
 // 서비스 워커 설치하고 캐시 파일 저장
