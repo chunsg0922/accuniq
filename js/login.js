@@ -44,8 +44,8 @@ function login(){
                     alert('측정 데이터 불러오기 성공');
             }
             },
-            error: function(){
-                alert('체성분 정보를 불러오는데 실패했습니다.');
+            error: function(request, status, error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
         location.href = "index.html";
