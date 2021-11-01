@@ -91,7 +91,13 @@
 
     </div>
     <script>
-    
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker
+            .register('/serviceworker.js')
+            .then(function(){
+                console.log('서비스 워커가 등록됨!');
+            })
+        }
     </script>
     <!-- Bootstrap core JavaScript-->
     <!--
