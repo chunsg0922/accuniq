@@ -1,10 +1,10 @@
 $(function(){
 
 });
-var login;
+var lo;
 function login(){
 
-    login = $.ajax({
+    lo = $.ajax({
     url: 'https://bca-proxy.accuniq.com/login',
     type: 'POST',
     xhrFields : {
