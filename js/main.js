@@ -135,7 +135,7 @@ $(function(){
         /****************
          * 변수 설정하기 *
          ****************/
-        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        /* Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#858796';
         var fatmass = result.fatmass / result.weight * 100;
         var moisture = result.moisture / result.weight * 100;
@@ -172,7 +172,7 @@ $(function(){
             },
             cutoutPercentage: 80,
         },
-        });
+        }); */
 
     
 
