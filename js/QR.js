@@ -55,7 +55,7 @@ $(function(){
             // measureData(barcode);
             var parse = barcode.split('bcadata=');
             alert(parse[0] + '나뉘었습니다!' + parse[1]);
-            
+            var urlData = parse[1];
             outputData.innerText = urlData;
         } else {
             outputMessage.hidden = false;
