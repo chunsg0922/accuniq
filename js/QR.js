@@ -67,8 +67,8 @@ $(function(){
     function measureData(url){
         var parse = url.split('bcadata=');
         urlData = parse[1];
-        console.log(urlData);
-        getData();
+        alert(urlData);
+        getData(urlData);
     }
 
     function getData(barcodeQrData) {
