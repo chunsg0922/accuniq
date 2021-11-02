@@ -1,7 +1,7 @@
 $(function(){
     var qrData;
-    var barcode;
-    var urlData;
+    // var barcode;
+    // var urlData;
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
@@ -51,8 +51,11 @@ $(function(){
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
             outputMessage.hidden = true;
             outputData.parentElement.hidden = false;
-            barcode = code.data;
-            measureData(barcode);
+            var barcode = code.data;
+            // measureData(barcode);
+            var parse = barcode.split('bcadata=');
+            alert(parse[0] + '나뉘었습니다!' + parse[1]);
+            
             outputData.innerText = urlData;
         } else {
             outputMessage.hidden = false;
