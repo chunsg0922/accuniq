@@ -66,6 +66,7 @@ $(function(){
 
     function measureData(url){
         var parse = url.split('bcadata=');
+        alert(parse[1]);
         urlData = parse[1];
         alert(urlData);
         getData(urlData);
