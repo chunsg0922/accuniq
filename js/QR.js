@@ -174,7 +174,8 @@ $(function(){
                     dataType: 'JSON',
                     success: function(msg){
                         alert('데이터 전송 성공');
-                        location.href = "data.html";
+                        console.log(msg);
+                        // location.href = "data.html";
                     },
                     error : function(request, status, error){
                         alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
