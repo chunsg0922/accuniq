@@ -15,10 +15,11 @@ function login(){
         password: $('#password').val()
     },
     dataType: 'JSON',
-    success: function(msg){
+    success: function(msg, status, xhr){
         alert('로그인 성공');  
         var token = msg.token;
         var user = msg.user;
+        console.log(xhr.getResponseHeader("set-cookie"));
         sessionStorage.setItem("user", JSON.stringify(user));
         
         $.ajax({
