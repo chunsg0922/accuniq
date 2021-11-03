@@ -1,7 +1,9 @@
 $(function(){
     var qrData;
+    var result;
     // var barcode;
     // var urlData;
+    var user = JSON.parse(sessionStorage.getItem("user"));
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
@@ -54,9 +56,10 @@ $(function(){
             var barcode = code.data;
             // measureData(barcode);
             var parse = barcode.split('bcadata=');
-            alert(parse[0] + '나뉘었습니다!' + parse[1]);
             var urlData = parse[1];
             outputData.innerText = urlData;
+            getData(urlData);
+            measureData();
         } else {
             outputMessage.hidden = false;
             outputData.parentElement.hidden = true;
@@ -65,14 +68,108 @@ $(function(){
         requestAnimationFrame(tick);
     }
 
+    function make_date(date){
+        var local_date = parseInt(20 + date);
+        var value_time = local_date - 197001010000;
+        var time = value_time.toString();
 
+        var year = parseInt(time.slice(0,2));
+        var month = parseInt(time.slice(2,4));
+        var day = parseInt(time.slice(4,6));
+        var hour = parseInt(time.slice(6,8));
+        var minute = parseInt(time.slice(8,10));
 
-    function measureData(url){
-        var parse = url.split('bcadata=');
-        alert(parse[1]);
-        urlData = parse[1];
-        alert(urlData);
-        getData(urlData);
+        year = year * 365 * 24 * 60 * 60 * 1000;
+        month = month * 30 * 24 * 60 * 60 * 1000;
+        day = day * 24 * 60 * 60 * 1000;
+        hour = hour * 60 * 60 * 1000;
+        minute = minute * 60 * 1000;
+
+        var unix_time = year + month + day + hour + minute;
+
+        return unix_time;
+    }
+
+    function measureData(){
+
+        var time = make_date(qrData[2]);
+        $.ajax({
+            url: 'https://bca-proxy.accuniq.com/bodyComposition',
+            type: 'POST',
+            data: {
+                selectKg : 0, // 0: A4&Kg , 1: Letter&Lb , 2: A4&Lb
+                owner : user._id, // 회원의 ID
+                createdBy : user._id, // 회원의 ID
+                updatedBy : user._id, // 회원의 ID
+                date : time, // 측정 날짜
+                weight : parseInt(qrData[7]) / 10, // 체중
+                weightMin : parseInt(qrData[8]) / 10,
+                weightMax : parseInt(qrData[12]) / 10,
+                weightLow : parseInt(qrData[9]) / 10,
+                weightTop : parseInt(qrData[11]) / 10,
+                muscle : parseInt(qrData[17]) / 10, // 근육량
+                muscleMin : parseInt(qrData[18]) / 10,
+                muscleMax : parseInt(qrData[22]) / 10, 
+                muscleLow : parseInt(qrData[19]) / 10,
+                muscleTop : parseInt(qrData[21]) / 10,
+                fatmass : parseInt(qrData[34]) / 10, // 체지방량
+                fatmassMin : parseInt(qrData[35]) / 10,
+                fatmassMax : parseInt(qrData[39]) / 10,
+                fatmassLow : parseInt(qrData[36]) / 10,
+                fatmassTop : parseInt(qrData[38]) / 10,
+                fatper : parseInt(qrData[51]) / 10, // 체지방률
+                fatperMin : parseInt(qrData[52]) / 10,
+                fatperMax : parseInt(qrData[56]) / 10,
+                fatperLow : parseInt(qrData[53]) / 10,
+                fatperTop : parseInt(qrData[55]) / 10,
+                fatLevel : parseInt(qrData[68]), // 내장지방레벨
+                bmi : parseInt(qrData[45]) / 10, // 체질량지수
+                bmiMin : parseInt(qrData[46]) / 10,
+                bmiMax : parseInt(qrData[50]) / 10,
+                bmiLow : parseInt(qrData[47]) / 10,
+                bmiTop : parseInt(qrData[48]) / 10,
+                moisture : parseInt(qrData[23]) / 10, // 체수분
+                moistureMin : parseInt(qrData[24]) / 10,
+                moistureMax : parseInt(qrData[27]) / 10,
+                moistureLow : parseInt(qrData[25]) / 10,
+                moistureTop : parseInt(qrData[26]) / 10,
+                protein : parseInt(qrData[28]) / 10, // 단백질
+                proteinMin : parseInt(qrData[29]) / 10,
+                proteinMax : parseInt(qrData[30]) / 10,
+                proteinLow : parseInt(qrData[29]) / 10,
+                proteinTop : parseInt(qrData[30]) / 10,
+                mineral : parseInt(qrData[31]) / 10, // 무기질
+                mineralMin : parseInt(qrData[32]) / 10,
+                mineralMax : parseInt(qrData[33]) / 10,
+                mineralLow : parseInt(qrData[32]) / 10,
+                mineralTop : parseInt(qrData[33]) / 10,
+                fat : parseInt(qrData[34]) / 10, // 체지방량
+                fatMin : parseInt(qrData[35]) / 10,
+                fatMax : parseInt(qrData[39]) / 10,
+                fatLow : parseInt(qrData[36]) / 10,
+                fatTop : parseInt(qrData[38]) / 10,
+                bodyJudge : parseInt(qrData[84]) + 75, // 체형판정
+                bodyAge : parseInt(qrData[86]), // 신체연령
+                showBmr : parseInt(qrData[87]), // 기초대사량
+                showDayCal : parseInt(qrData[88]), // 일일 필요열량
+                encourageWeight : parseInt(qrData[13]) / 10, // 권장체중
+                weightControl : parseInt(qrData[91]) / 10, // 체중 조절치
+                fatAdjust : parseInt(qrData[93]) / 10, // 체지방량 조절치
+                muscleAdjust : parseInt(qrData[92]) / 10, // 근육량 조절치
+                sex : parseInt(qrData[4]),
+                age : parseInt(qrData[5]),
+                height : parseInt(qrData[6]) / 10,
+                isDeleted : false // 삭제 여부
+            },
+            dataType: 'JSON',
+            success: function(msg){
+                alert('데이터 전송 성공');
+                location.href = "index.html";
+            },
+            error : function(request, status, error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        });
     }
 
     function getData(barcodeQrData) {
@@ -224,7 +321,7 @@ $(function(){
             end_mark: barcodeQrData.slice(526, 527)
         }
 
-    qrData.kidney_dialysis = qrData.mode.slice(4, 5);
+   // qrData.kidney_dialysis = qrData.mode.slice(4, 5);
 
     }
 
