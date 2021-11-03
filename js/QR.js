@@ -56,7 +56,7 @@ $(function(){
             outputData.parentElement.hidden = false;
             var barcode = code.data;
 
-            location.href = "data.html"
+            location.href = "data.html";
 
             // measureData(barcode);
             // var parse = barcode.split('bcadata=');
