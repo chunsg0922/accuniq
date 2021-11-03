@@ -58,8 +58,11 @@ $(function(){
             var parse = barcode.split('bcadata=');
             var urlData = parse[1];
             outputData.innerText = urlData;
+            alert(urlData);
             getData(urlData);
             measureData();
+
+
         } else {
             outputMessage.hidden = false;
             outputData.parentElement.hidden = true;
