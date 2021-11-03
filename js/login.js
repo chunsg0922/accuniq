@@ -1,7 +1,7 @@
 $(function(){
     
 });
-
+var pp;
 
 function login(){
     var lo;
@@ -39,8 +39,11 @@ function login(){
                 console.log('체성분 데이터 로딩 성공');
                 console.log(msg.bodyComposition);
                 console.log(msg.bodyComposition == 1);
+                console.log(typeof(msg.bodyComposition));
 
-                if(msg.bodyComposition == 0){
+                pp = msg.bodyComposition;
+                
+                if(msg.bodyComposition == null){
                     alert('측정 데이터가 존재하지 않습니다.');
                 }
     
