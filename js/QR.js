@@ -55,15 +55,12 @@ $(function(){
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
             outputMessage.hidden = true;
             outputData.parentElement.hidden = false;
-            var barcode = code.data;
+            var barcode = code.data; // 변수 barcode에 QR코드 URL 저장
 
-           // location.href = "data.html";
-
-            var parse = barcode.split('bcadata=');
-            var urlData = parse[1];
+            var parse = barcode.split('bcadata='); // 변수 parse에 URL을 'bcadata=' 기준으로 파싱한다.
+            var urlData = parse[1]; // 변수 urlData에 잘리진 URL 데이터의 두번째 인덱스를 저장한다.
             outputData.innerText = urlData;
-            alert(urlData);
-            getData(urlData);
+            getData(urlData); // getData()로 데이터 파싱
             measureData();
 
 
@@ -100,18 +97,18 @@ $(function(){
     function measureData(){
 
         var time = make_date(qrData[2]);
-        $.ajax({
-            url: 'https://bca-proxy.accuniq.com/login',
-            type: 'POST',
-            xhrFields : {
-                withCredentials: true
-            },
-            data: {
-                identifier : user.email,
-                password : login
-            },
-            dataType: 'JSON',
-            success: function(){
+        // $.ajax({
+        //     url: 'https://bca-proxy.accuniq.com/login',
+        //     type: 'POST',
+        //     xhrFields : {
+        //         withCredentials: true
+        //     },
+        //     data: {
+        //         identifier : user.email,
+        //         password : login
+        //     },
+        //     dataType: 'JSON',
+        //     success: function(){
                 $.ajax({
                     url: 'https://bca-proxy.accuniq.com/bodyComposition',
                     type: 'POST',
@@ -192,11 +189,11 @@ $(function(){
                         alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                     }
                 });
-            },
-            error: function(){
-                console.log('로그인 정보 오류');
-            }
-        })
+        //     },
+        //     error: function(){
+        //         console.log('로그인 정보 오류');
+        //     }
+        // })
         
     }
 
