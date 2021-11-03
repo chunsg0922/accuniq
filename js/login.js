@@ -38,12 +38,13 @@ function login(){
             success: function(msg){
                 console.log('체성분 데이터 로딩 성공');
                 console.log(msg.bodyComposition);
+                console.log(msg.bodyComposition == 1);
 
-                if(msg.bodyCompositions.length == 0){
+                if(msg.bodyComposition == 0){
                     alert('측정 데이터가 존재하지 않습니다.');
                 }
     
-                else if(msg.bodyCompositions.length == 1){
+                else if(msg.bodyComposition == 1){
                     var result = msg.bodyCompositions[0];
                     sessionStorage.setItem("body_one", JSON.stringify(result));
                     console.log(result);
