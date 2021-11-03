@@ -1,5 +1,6 @@
 $(function(){
     var user = JSON.parse(sessionStorage.getItem("user"));
+    document.getElementById('nickname').innerHTML = user.nickname;
     document.getElementById('info_nickname').innerHTML = user.nickname + '님!';
     document.getElementById('info_email').innerHTML = user.email;
     document.getElementById('info_age').innerHTML = user.age;

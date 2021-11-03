@@ -11,6 +11,7 @@ $(function(){
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
+    document.getElementById('nickname').innerHTML = user.nickname;
 
     function drawLine(begin, end, color) {
         canvas.beginPath();
@@ -54,6 +55,9 @@ $(function(){
             outputMessage.hidden = true;
             outputData.parentElement.hidden = false;
             var barcode = code.data;
+
+            location.href = "data.html"
+
             // measureData(barcode);
             var parse = barcode.split('bcadata=');
             var urlData = parse[1];

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="js/main.js?ver=1"></script>
+    <title>메인페이지 : ACCUNIQ</title>
+
+    <link href="vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json"/>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Begin : Main Content -->
+            <div id="content">
+
+                <!-- Begin : Nav bar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="position: fixed; width: 100%; z-index: 999;">
+                    <!-- ACCUNIQ 로고 -->
+                    <a href="index.html">
+                    <img src="img/accuniq_logo02.png" style="width: 140px; height: auto;"></a>
+
+                    <ul class="navbar-nav ml-auto">
+                    
+                        <!-- 네비게이션 바 메뉴 목록 -->
+                        <li class="nav-item">
+                        <a class="nav-link" href="qr.html">
+                            <img src="img/qr.png" width="20" height="20">
+                        </a>
+                        </li>
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-inline text-gray-600 small" id="nickname"> </span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+
+                            <!-- 드롭다운 메뉴 목록 -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="myinfo.html">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    내 정보
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    로그아웃
+                                </a>
+                            </div>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End : Nav bar -->
+
+                <!-- Begin : Page Content -->
+                <div class="container-fluid" style="margin-top: 80px;">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800"></h1>
+
+                    </div>
+
+                    <!-- 측정 결과 분석 Part -->
+                    
+                        <!-- Approach -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">측정 결과 분석</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="font-weight-bold" style="font-size: 23px; text-align: center;" id="show_bodyjudge"></h4>
+                                <hr>
+                                <h4 class="font-weight-normal" style="font-size: 16px;" id="show_tips"></h4>
+                            </div>
+                        </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End : Main Content -->
+
+            <!-- Begin : Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Scott OJT 2021.11 </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End : Footer -->
+
+        </div>
+        <!-- End : Content Wrapper -->
+
+    </div>
+    <!-- End : Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃을 하시겠습니까?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">아래의 "로그아웃"을 선택하면 로그아웃됩니다.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                    <a class="btn btn-primary" href="login.html">로그아웃</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
