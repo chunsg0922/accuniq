@@ -103,6 +103,9 @@ $(function(){
         $.ajax({
             url: 'https://bca-proxy.accuniq.com/login',
             type: 'POST',
+            xhrFields : {
+                withCredentials: true
+            },
             data: {
                 identifier : user.email,
                 password : login
@@ -186,6 +189,9 @@ $(function(){
                         alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                     }
                 });
+            },
+            error: function(){
+                console.log('로그인 정보 오류');
             }
         })
         
