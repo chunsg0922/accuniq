@@ -58,7 +58,6 @@ $(function(){
 
            // location.href = "data.html";
 
-            measureData(barcode);
             var parse = barcode.split('bcadata=');
             var urlData = parse[1];
             outputData.innerText = urlData;
