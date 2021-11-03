@@ -61,6 +61,7 @@ $(function(){
             var urlData = parse[1]; // 변수 urlData에 잘리진 URL 데이터의 두번째 인덱스를 저장한다.
             outputData.innerText = urlData;
             var send = getData(urlData); // getData()로 데이터 파싱
+            console.log(typeof(send));
             console.log(send);
             measureData(send);
 
