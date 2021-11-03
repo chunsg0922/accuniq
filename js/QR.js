@@ -1,10 +1,6 @@
 $(function(){
     
-    var result;
-    // var barcode;
-    // var urlData;
     var user = JSON.parse(sessionStorage.getItem("user"));
-    var login = JSON.parse(sessionStorage.getItem("login"));
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
@@ -175,7 +171,7 @@ $(function(){
                     success: function(msg){
                         alert('데이터 전송 성공');
                         console.log(msg);
-                        // location.href = "data.html";
+                        location.href = "data.html";
                     },
                     error : function(request, status, error){
                         alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
