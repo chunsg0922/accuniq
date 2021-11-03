@@ -37,18 +37,14 @@ function login(){
             },
             success: function(msg){
                 console.log('체성분 데이터 로딩 성공');
-                console.log(msg.bodyComposition);
-                console.log(msg.bodyComposition == 1);
-                console.log(typeof(msg.bodyComposition));
-
                 pp = msg.bodyComposition;
-                
+
                 if(msg.bodyComposition == null){
                     alert('측정 데이터가 존재하지 않습니다.');
                 }
     
-                else if(msg.bodyComposition == 1){
-                    var result = msg.bodyCompositions[0];
+                else if(msg.bodyComposition != null){
+                    var result = msg.bodyComposition;
                     sessionStorage.setItem("body_one", JSON.stringify(result));
                     console.log(result);
                     alert('측정 데이터 불러오기 성공');
