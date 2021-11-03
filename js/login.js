@@ -1,8 +1,9 @@
 $(function(){
-
+    
 });
-var lo;
+
 function login(){
+    var lo;
 
     lo = $.ajax({
     url: 'https://bca-proxy.accuniq.com/login',
@@ -19,7 +20,7 @@ function login(){
         alert('로그인 성공');  
         var token = msg.token;
         var user = msg.user;
-        console.log(xhr.getResponseHeader("set-cookie"));
+        console.log(lo.getAllResponseHeader());
         sessionStorage.setItem("user", JSON.stringify(user));
         
         $.ajax({
