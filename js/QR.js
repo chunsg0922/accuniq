@@ -173,9 +173,10 @@ $(function(){
                     },
                     dataType: 'JSON',
                     success: function(msg){
-                        alert('데이터 전송 성공');
                         console.log(msg);
-                        sessionStorage.setItem("QRdata", JSON.string)
+                        alert('데이터 전송 성공');
+
+                        sessionStorage.setItem("QRdata", JSON.stringify(msg));
                         location.href = "data.html";
                     },
                     error : function(request, status, error){

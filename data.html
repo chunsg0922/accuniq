@@ -82,8 +82,82 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800"></h1>
+                        <h1 class="h3 mb-0 text-gray-800">QR코드 측정 데이터</h1>
 
+                    </div>
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- 체성분 측정 데이터 차트 part -->
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">측정 데이터</h6>
+                                </div>
+                                <div class="card-body">
+
+                                    <h5 class="font-weight-bold" id="show_date" style="font-size: 18px; text-align: center;"></h4>
+                                    <h5 class="font-weight-bold" id="show_time" style="font-size: 14px; text-align: center;"></h5>
+                                    <hr>
+
+                                    <!-- 체중 표시 part -->
+                                    <h4 class="small font-weight-bold">체중</h4>
+                                    <h4 class="font-weight-bold" id="show_weight"></h4>
+                                    <div class="progress mb-4">
+                                        <div id="show_bar_weight" class="progress-bar bg-danger" role="progressbar" style="width: 0%" 
+                                        aria-valuenow="" aria-valuemin="" aria-valuemax=""></div>
+                                    </div>
+
+                                    <!-- 근육량 표시 part-->
+                                    <h4 class="small font-weight-bold">근육량</h4>
+                                    <h4 class=" font-weight-bold" id="show_muscle"></h4>
+                                    <div class="progress mb-4">
+                                        <div id="show_bar_muscle" class="progress-bar bg-warning" role="progressbar" style="width: 0%"
+                                            aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+                                    <!-- 체지방 표시 part -->
+                                    <h4 class="small font-weight-bold" >체지방률</h4>
+                                        <h4 class="font-weight-bold" id="show_fatper"></h3>
+                                    <div class="progress mb-4">
+                                        <div id="show_bar_fatper" class="progress-bar" role="progressbar" style="width: 0%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- 체성분 도넛 차트 part -->
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">체성분 분석</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> 체지방
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> 체수분
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> 무기질
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-warning"></i> 단백질
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 측정 결과 분석 Part -->
