@@ -4,6 +4,7 @@ $(function(){
     // var barcode;
     // var urlData;
     var user = JSON.parse(sessionStorage.getItem("user"));
+    var login = JSON.parse(sessionStorage.getItem("login"));
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
@@ -100,82 +101,94 @@ $(function(){
 
         var time = make_date(qrData[2]);
         $.ajax({
-            url: 'https://bca-proxy.accuniq.com/bodyComposition',
+            url: 'https://bca-proxy.accuniq.com/login',
             type: 'POST',
             data: {
-                selectKg : 0, // 0: A4&Kg , 1: Letter&Lb , 2: A4&Lb
-                owner : user._id, // 회원의 ID
-                createdBy : user._id, // 회원의 ID
-                updatedBy : user._id, // 회원의 ID
-                date : time, // 측정 날짜
-                weight : parseInt(qrData[7]) / 10, // 체중
-                weightMin : parseInt(qrData[8]) / 10,
-                weightMax : parseInt(qrData[12]) / 10,
-                weightLow : parseInt(qrData[9]) / 10,
-                weightTop : parseInt(qrData[11]) / 10,
-                muscle : parseInt(qrData[17]) / 10, // 근육량
-                muscleMin : parseInt(qrData[18]) / 10,
-                muscleMax : parseInt(qrData[22]) / 10, 
-                muscleLow : parseInt(qrData[19]) / 10,
-                muscleTop : parseInt(qrData[21]) / 10,
-                fatmass : parseInt(qrData[34]) / 10, // 체지방량
-                fatmassMin : parseInt(qrData[35]) / 10,
-                fatmassMax : parseInt(qrData[39]) / 10,
-                fatmassLow : parseInt(qrData[36]) / 10,
-                fatmassTop : parseInt(qrData[38]) / 10,
-                fatper : parseInt(qrData[51]) / 10, // 체지방률
-                fatperMin : parseInt(qrData[52]) / 10,
-                fatperMax : parseInt(qrData[56]) / 10,
-                fatperLow : parseInt(qrData[53]) / 10,
-                fatperTop : parseInt(qrData[55]) / 10,
-                fatLevel : parseInt(qrData[68]), // 내장지방레벨
-                bmi : parseInt(qrData[45]) / 10, // 체질량지수
-                bmiMin : parseInt(qrData[46]) / 10,
-                bmiMax : parseInt(qrData[50]) / 10,
-                bmiLow : parseInt(qrData[47]) / 10,
-                bmiTop : parseInt(qrData[48]) / 10,
-                moisture : parseInt(qrData[23]) / 10, // 체수분
-                moistureMin : parseInt(qrData[24]) / 10,
-                moistureMax : parseInt(qrData[27]) / 10,
-                moistureLow : parseInt(qrData[25]) / 10,
-                moistureTop : parseInt(qrData[26]) / 10,
-                protein : parseInt(qrData[28]) / 10, // 단백질
-                proteinMin : parseInt(qrData[29]) / 10,
-                proteinMax : parseInt(qrData[30]) / 10,
-                proteinLow : parseInt(qrData[29]) / 10,
-                proteinTop : parseInt(qrData[30]) / 10,
-                mineral : parseInt(qrData[31]) / 10, // 무기질
-                mineralMin : parseInt(qrData[32]) / 10,
-                mineralMax : parseInt(qrData[33]) / 10,
-                mineralLow : parseInt(qrData[32]) / 10,
-                mineralTop : parseInt(qrData[33]) / 10,
-                fat : parseInt(qrData[34]) / 10, // 체지방량
-                fatMin : parseInt(qrData[35]) / 10,
-                fatMax : parseInt(qrData[39]) / 10,
-                fatLow : parseInt(qrData[36]) / 10,
-                fatTop : parseInt(qrData[38]) / 10,
-                bodyJudge : parseInt(qrData[84]) + 75, // 체형판정
-                bodyAge : parseInt(qrData[86]), // 신체연령
-                showBmr : parseInt(qrData[87]), // 기초대사량
-                showDayCal : parseInt(qrData[88]), // 일일 필요열량
-                encourageWeight : parseInt(qrData[13]) / 10, // 권장체중
-                weightControl : parseInt(qrData[91]) / 10, // 체중 조절치
-                fatAdjust : parseInt(qrData[93]) / 10, // 체지방량 조절치
-                muscleAdjust : parseInt(qrData[92]) / 10, // 근육량 조절치
-                sex : parseInt(qrData[4]),
-                age : parseInt(qrData[5]),
-                height : parseInt(qrData[6]) / 10,
-                isDeleted : false // 삭제 여부
+                identifier : user.email,
+                password : login
             },
             dataType: 'JSON',
-            success: function(msg){
-                alert('데이터 전송 성공');
-                location.href = "data.html";
-            },
-            error : function(request, status, error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            success: function(){
+                $.ajax({
+                    url: 'https://bca-proxy.accuniq.com/bodyComposition',
+                    type: 'POST',
+                    data: {
+                        selectKg : 0, // 0: A4&Kg , 1: Letter&Lb , 2: A4&Lb
+                        owner : user._id, // 회원의 ID
+                        createdBy : user._id, // 회원의 ID
+                        updatedBy : user._id, // 회원의 ID
+                        date : time, // 측정 날짜
+                        weight : parseInt(qrData[7]) / 10, // 체중
+                        weightMin : parseInt(qrData[8]) / 10,
+                        weightMax : parseInt(qrData[12]) / 10,
+                        weightLow : parseInt(qrData[9]) / 10,
+                        weightTop : parseInt(qrData[11]) / 10,
+                        muscle : parseInt(qrData[17]) / 10, // 근육량
+                        muscleMin : parseInt(qrData[18]) / 10,
+                        muscleMax : parseInt(qrData[22]) / 10, 
+                        muscleLow : parseInt(qrData[19]) / 10,
+                        muscleTop : parseInt(qrData[21]) / 10,
+                        fatmass : parseInt(qrData[34]) / 10, // 체지방량
+                        fatmassMin : parseInt(qrData[35]) / 10,
+                        fatmassMax : parseInt(qrData[39]) / 10,
+                        fatmassLow : parseInt(qrData[36]) / 10,
+                        fatmassTop : parseInt(qrData[38]) / 10,
+                        fatper : parseInt(qrData[51]) / 10, // 체지방률
+                        fatperMin : parseInt(qrData[52]) / 10,
+                        fatperMax : parseInt(qrData[56]) / 10,
+                        fatperLow : parseInt(qrData[53]) / 10,
+                        fatperTop : parseInt(qrData[55]) / 10,
+                        fatLevel : parseInt(qrData[68]), // 내장지방레벨
+                        bmi : parseInt(qrData[45]) / 10, // 체질량지수
+                        bmiMin : parseInt(qrData[46]) / 10,
+                        bmiMax : parseInt(qrData[50]) / 10,
+                        bmiLow : parseInt(qrData[47]) / 10,
+                        bmiTop : parseInt(qrData[48]) / 10,
+                        moisture : parseInt(qrData[23]) / 10, // 체수분
+                        moistureMin : parseInt(qrData[24]) / 10,
+                        moistureMax : parseInt(qrData[27]) / 10,
+                        moistureLow : parseInt(qrData[25]) / 10,
+                        moistureTop : parseInt(qrData[26]) / 10,
+                        protein : parseInt(qrData[28]) / 10, // 단백질
+                        proteinMin : parseInt(qrData[29]) / 10,
+                        proteinMax : parseInt(qrData[30]) / 10,
+                        proteinLow : parseInt(qrData[29]) / 10,
+                        proteinTop : parseInt(qrData[30]) / 10,
+                        mineral : parseInt(qrData[31]) / 10, // 무기질
+                        mineralMin : parseInt(qrData[32]) / 10,
+                        mineralMax : parseInt(qrData[33]) / 10,
+                        mineralLow : parseInt(qrData[32]) / 10,
+                        mineralTop : parseInt(qrData[33]) / 10,
+                        fat : parseInt(qrData[34]) / 10, // 체지방량
+                        fatMin : parseInt(qrData[35]) / 10,
+                        fatMax : parseInt(qrData[39]) / 10,
+                        fatLow : parseInt(qrData[36]) / 10,
+                        fatTop : parseInt(qrData[38]) / 10,
+                        bodyJudge : parseInt(qrData[84]) + 75, // 체형판정
+                        bodyAge : parseInt(qrData[86]), // 신체연령
+                        showBmr : parseInt(qrData[87]), // 기초대사량
+                        showDayCal : parseInt(qrData[88]), // 일일 필요열량
+                        encourageWeight : parseInt(qrData[13]) / 10, // 권장체중
+                        weightControl : parseInt(qrData[91]) / 10, // 체중 조절치
+                        fatAdjust : parseInt(qrData[93]) / 10, // 체지방량 조절치
+                        muscleAdjust : parseInt(qrData[92]) / 10, // 근육량 조절치
+                        sex : parseInt(qrData[4]),
+                        age : parseInt(qrData[5]),
+                        height : parseInt(qrData[6]) / 10,
+                        isDeleted : false // 삭제 여부
+                    },
+                    dataType: 'JSON',
+                    success: function(msg){
+                        alert('데이터 전송 성공');
+                        location.href = "data.html";
+                    },
+                    error : function(request, status, error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });
             }
-        });
+        })
+        
     }
 
     function getData(barcodeQrData) {

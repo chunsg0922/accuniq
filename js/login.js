@@ -2,8 +2,10 @@ $(function(){
     
 });
 
+
 function login(){
     var lo;
+    var pw = $('#password').val();
 
     lo = $.ajax({
     url: 'https://bca-proxy.accuniq.com/login',
@@ -22,6 +24,7 @@ function login(){
         var user = msg.user;
         console.log(xhr.getAllResponseHeaders());
         sessionStorage.setItem("user", JSON.stringify(user));
+        sessionStorage.setItem("login", JSON.stringify(pw));
         
         $.ajax({
             url: 'https://bca-proxy.accuniq.com/bodyComposition/find?query={%22where%22:{%22owner%22:' + user._id + '}}',
