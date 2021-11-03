@@ -56,7 +56,7 @@ function login(){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
-        location.href = "index.html";
+        //location.href = "index.html";
     }, error: function(){
         alert('로그인 정보 오류');
         console.log('실패');
