@@ -38,15 +38,14 @@ function login(){
             success: function(msg){
                 console.log('체성분 데이터 로딩 성공');
                 pp = msg.bodyCompositions[0];
-                console.log(msg.bodyCompositions);
                 console.log(pp);
 
-                if(msg.bodyComposition == null){
+                if(msg.bodyCompositions.length == 0){
                     alert('측정 데이터가 존재하지 않습니다.');
                 }
     
-                else if(msg.bodyComposition != null){
-                    var result = msg.bodyComposition;
+                else {
+                    var result = msg.bodyCompositions[0];
                     sessionStorage.setItem("body_one", JSON.stringify(result));
                     console.log(result);
                     alert('측정 데이터 불러오기 성공');
@@ -56,7 +55,7 @@ function login(){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
-        //location.href = "index.html";
+        location.href = "index.html";
     }, error: function(){
         alert('로그인 정보 오류');
         console.log('실패');
