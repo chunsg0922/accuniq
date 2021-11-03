@@ -1,5 +1,5 @@
 $(function(){
-    var qr;
+    
     var result;
     // var barcode;
     // var urlData;
