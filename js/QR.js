@@ -56,15 +56,15 @@ $(function(){
             outputData.parentElement.hidden = false;
             var barcode = code.data;
 
-            location.href = "data.html";
+           // location.href = "data.html";
 
-            // measureData(barcode);
-            // var parse = barcode.split('bcadata=');
-            // var urlData = parse[1];
-            // outputData.innerText = urlData;
-            // alert(urlData);
-            // getData(urlData);
-            // measureData();
+            measureData(barcode);
+            var parse = barcode.split('bcadata=');
+            var urlData = parse[1];
+            outputData.innerText = urlData;
+            alert(urlData);
+            getData(urlData);
+            measureData();
 
 
         } else {
@@ -171,7 +171,7 @@ $(function(){
             dataType: 'JSON',
             success: function(msg){
                 alert('데이터 전송 성공');
-                location.href = "index.html";
+                location.href = "data.html";
             },
             error : function(request, status, error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
