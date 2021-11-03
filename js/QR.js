@@ -115,6 +115,9 @@ $(function(){
                 $.ajax({
                     url: 'https://bca-proxy.accuniq.com/bodyComposition',
                     type: 'POST',
+                    xhrFields:{
+                        withCredentials: true
+                    },
                     data: {
                         selectKg : 0, // 0: A4&Kg , 1: Letter&Lb , 2: A4&Lb
                         owner : user._id, // 회원의 ID
