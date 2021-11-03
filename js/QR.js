@@ -1,5 +1,5 @@
 $(function(){
-    var qrData;
+    var qr;
     var result;
     // var barcode;
     // var urlData;
@@ -60,8 +60,8 @@ $(function(){
             var parse = barcode.split('bcadata='); // 변수 parse에 URL을 'bcadata=' 기준으로 파싱한다.
             var urlData = parse[1]; // 변수 urlData에 잘리진 URL 데이터의 두번째 인덱스를 저장한다.
             outputData.innerText = urlData;
-            getData(urlData); // getData()로 데이터 파싱
-            measureData();
+            var send = getData(urlData); // getData()로 데이터 파싱
+            measureData(send);
 
 
         } else {
@@ -94,21 +94,10 @@ $(function(){
         return unix_time;
     }
 
-    function measureData(){
+    function measureData(qr){
 
-        var time = make_date(qrData[2]);
-        // $.ajax({
-        //     url: 'https://bca-proxy.accuniq.com/login',
-        //     type: 'POST',
-        //     xhrFields : {
-        //         withCredentials: true
-        //     },
-        //     data: {
-        //         identifier : user.email,
-        //         password : login
-        //     },
-        //     dataType: 'JSON',
-        //     success: function(){
+        var time = make_date(qr[2]);
+
                 $.ajax({
                     url: 'https://bca-proxy.accuniq.com/bodyComposition',
                     type: 'POST',
@@ -121,63 +110,63 @@ $(function(){
                         createdBy : user._id, // 회원의 ID
                         updatedBy : user._id, // 회원의 ID
                         date : time, // 측정 날짜
-                        weight : parseInt(qrData[7]) / 10, // 체중
-                        weightMin : parseInt(qrData[8]) / 10,
-                        weightMax : parseInt(qrData[12]) / 10,
-                        weightLow : parseInt(qrData[9]) / 10,
-                        weightTop : parseInt(qrData[11]) / 10,
-                        muscle : parseInt(qrData[17]) / 10, // 근육량
-                        muscleMin : parseInt(qrData[18]) / 10,
-                        muscleMax : parseInt(qrData[22]) / 10, 
-                        muscleLow : parseInt(qrData[19]) / 10,
-                        muscleTop : parseInt(qrData[21]) / 10,
-                        fatmass : parseInt(qrData[34]) / 10, // 체지방량
-                        fatmassMin : parseInt(qrData[35]) / 10,
-                        fatmassMax : parseInt(qrData[39]) / 10,
-                        fatmassLow : parseInt(qrData[36]) / 10,
-                        fatmassTop : parseInt(qrData[38]) / 10,
-                        fatper : parseInt(qrData[51]) / 10, // 체지방률
-                        fatperMin : parseInt(qrData[52]) / 10,
-                        fatperMax : parseInt(qrData[56]) / 10,
-                        fatperLow : parseInt(qrData[53]) / 10,
-                        fatperTop : parseInt(qrData[55]) / 10,
-                        fatLevel : parseInt(qrData[68]), // 내장지방레벨
-                        bmi : parseInt(qrData[45]) / 10, // 체질량지수
-                        bmiMin : parseInt(qrData[46]) / 10,
-                        bmiMax : parseInt(qrData[50]) / 10,
-                        bmiLow : parseInt(qrData[47]) / 10,
-                        bmiTop : parseInt(qrData[48]) / 10,
-                        moisture : parseInt(qrData[23]) / 10, // 체수분
-                        moistureMin : parseInt(qrData[24]) / 10,
-                        moistureMax : parseInt(qrData[27]) / 10,
-                        moistureLow : parseInt(qrData[25]) / 10,
-                        moistureTop : parseInt(qrData[26]) / 10,
-                        protein : parseInt(qrData[28]) / 10, // 단백질
-                        proteinMin : parseInt(qrData[29]) / 10,
-                        proteinMax : parseInt(qrData[30]) / 10,
-                        proteinLow : parseInt(qrData[29]) / 10,
-                        proteinTop : parseInt(qrData[30]) / 10,
-                        mineral : parseInt(qrData[31]) / 10, // 무기질
-                        mineralMin : parseInt(qrData[32]) / 10,
-                        mineralMax : parseInt(qrData[33]) / 10,
-                        mineralLow : parseInt(qrData[32]) / 10,
-                        mineralTop : parseInt(qrData[33]) / 10,
-                        fat : parseInt(qrData[34]) / 10, // 체지방량
-                        fatMin : parseInt(qrData[35]) / 10,
-                        fatMax : parseInt(qrData[39]) / 10,
-                        fatLow : parseInt(qrData[36]) / 10,
-                        fatTop : parseInt(qrData[38]) / 10,
-                        bodyJudge : parseInt(qrData[84]) + 75, // 체형판정
-                        bodyAge : parseInt(qrData[86]), // 신체연령
-                        showBmr : parseInt(qrData[87]), // 기초대사량
-                        showDayCal : parseInt(qrData[88]), // 일일 필요열량
-                        encourageWeight : parseInt(qrData[13]) / 10, // 권장체중
-                        weightControl : parseInt(qrData[91]) / 10, // 체중 조절치
-                        fatAdjust : parseInt(qrData[93]) / 10, // 체지방량 조절치
-                        muscleAdjust : parseInt(qrData[92]) / 10, // 근육량 조절치
-                        sex : parseInt(qrData[4]),
-                        age : parseInt(qrData[5]),
-                        height : parseInt(qrData[6]) / 10,
+                        weight : parseInt(qr[7]) / 10, // 체중
+                        weightMin : parseInt(qr[8]) / 10,
+                        weightMax : parseInt(qr[12]) / 10,
+                        weightLow : parseInt(qr[9]) / 10,
+                        weightTop : parseInt(qr[11]) / 10,
+                        muscle : parseInt(qr[17]) / 10, // 근육량
+                        muscleMin : parseInt(qr[18]) / 10,
+                        muscleMax : parseInt(qr[22]) / 10, 
+                        muscleLow : parseInt(qr[19]) / 10,
+                        muscleTop : parseInt(qr[21]) / 10,
+                        fatmass : parseInt(qr[34]) / 10, // 체지방량
+                        fatmassMin : parseInt(qr[35]) / 10,
+                        fatmassMax : parseInt(qr[39]) / 10,
+                        fatmassLow : parseInt(qr[36]) / 10,
+                        fatmassTop : parseInt(qr[38]) / 10,
+                        fatper : parseInt(qr[51]) / 10, // 체지방률
+                        fatperMin : parseInt(qr[52]) / 10,
+                        fatperMax : parseInt(qr[56]) / 10,
+                        fatperLow : parseInt(qr[53]) / 10,
+                        fatperTop : parseInt(qr[55]) / 10,
+                        fatLevel : parseInt(qr[68]), // 내장지방레벨
+                        bmi : parseInt(qr[45]) / 10, // 체질량지수
+                        bmiMin : parseInt(qr[46]) / 10,
+                        bmiMax : parseInt(qr[50]) / 10,
+                        bmiLow : parseInt(qr[47]) / 10,
+                        bmiTop : parseInt(qr[48]) / 10,
+                        moisture : parseInt(qr[23]) / 10, // 체수분
+                        moistureMin : parseInt(qr[24]) / 10,
+                        moistureMax : parseInt(qr[27]) / 10,
+                        moistureLow : parseInt(qr[25]) / 10,
+                        moistureTop : parseInt(qr[26]) / 10,
+                        protein : parseInt(qr[28]) / 10, // 단백질
+                        proteinMin : parseInt(qr[29]) / 10,
+                        proteinMax : parseInt(qr[30]) / 10,
+                        proteinLow : parseInt(qr[29]) / 10,
+                        proteinTop : parseInt(qr[30]) / 10,
+                        mineral : parseInt(qr[31]) / 10, // 무기질
+                        mineralMin : parseInt(qr[32]) / 10,
+                        mineralMax : parseInt(qr[33]) / 10,
+                        mineralLow : parseInt(qr[32]) / 10,
+                        mineralTop : parseInt(qr[33]) / 10,
+                        fat : parseInt(qr[34]) / 10, // 체지방량
+                        fatMin : parseInt(qr[35]) / 10,
+                        fatMax : parseInt(qr[39]) / 10,
+                        fatLow : parseInt(qr[36]) / 10,
+                        fatTop : parseInt(qr[38]) / 10,
+                        bodyJudge : parseInt(qr[84]) + 75, // 체형판정
+                        bodyAge : parseInt(qr[86]), // 신체연령
+                        showBmr : parseInt(qr[87]), // 기초대사량
+                        showDayCal : parseInt(qr[88]), // 일일 필요열량
+                        encourageWeight : parseInt(qr[13]) / 10, // 권장체중
+                        weightControl : parseInt(qr[91]) / 10, // 체중 조절치
+                        fatAdjust : parseInt(qr[93]) / 10, // 체지방량 조절치
+                        muscleAdjust : parseInt(qr[92]) / 10, // 근육량 조절치
+                        sex : parseInt(qr[4]),
+                        age : parseInt(qr[5]),
+                        height : parseInt(qr[6]) / 10,
                         isDeleted : false // 삭제 여부
                     },
                     dataType: 'JSON',
@@ -189,164 +178,160 @@ $(function(){
                         alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                     }
                 });
-        //     },
-        //     error: function(){
-        //         console.log('로그인 정보 오류');
-        //     }
-        // })
         
     }
 
-    function getData(barcodeQrData) {
-        qrData = {
-            protocol_command: barcodeQrData.slice(0, 2),
-            ap_version: barcodeQrData.slice(2, 8),
-            received_date: barcodeQrData.slice(8, 18),
-            id_number: barcodeQrData.slice(18, 38),
-            sex: barcodeQrData.slice(38, 39),
-            age: barcodeQrData.slice(39, 42),
-            height: barcodeQrData.slice(42, 46),
-            weight: barcodeQrData.slice(46, 50),
-            weight_min_limit: barcodeQrData.slice(50, 54),
-            weight_low_limit: barcodeQrData.slice(54, 58),
-            std_weight: barcodeQrData.slice(58, 62),
-            weight_top_limit: barcodeQrData.slice(62, 66),
-            weight_max_limit: barcodeQrData.slice(66, 70),
-            weight_recommend: barcodeQrData.slice(70, 74),
-            lbm_quantity: barcodeQrData.slice(74, 78),
-            lbm_low_limit: barcodeQrData.slice(78, 82),
-            lbm_top_limit: barcodeQrData.slice(82, 86),
-            muscle_quantity: barcodeQrData.slice(86, 90),
-            muscle_min_limit: barcodeQrData.slice(90, 94),
-            muscle_low_limit: barcodeQrData.slice(94, 98),
-            muscle_standard: barcodeQrData.slice(98, 102),
-            muscle_top_limit: barcodeQrData.slice(102, 106),
-            muscle_max_limit: barcodeQrData.slice(106, 110),
-            tbw_quantity: barcodeQrData.slice(110, 114),
-            tbw_min_limit: barcodeQrData.slice(114, 118),
-            tbw_low_limit: barcodeQrData.slice(118, 122),
-            tbw_top_limit: barcodeQrData.slice(122, 126),
-            tbw_max_limit: barcodeQrData.slice(126, 130),
-            protein_quantity: barcodeQrData.slice(130, 134),
-            protein_low_limit: barcodeQrData.slice(134, 138),
-            protein_top_limit: barcodeQrData.slice(138, 142),
-            mineral_quantity: barcodeQrData.slice(142, 146),
-            mineral_low_limit: barcodeQrData.slice(146, 150),
-            mineral_top_limit: barcodeQrData.slice(150, 154),
-            mbf_quantity: barcodeQrData.slice(154, 158),
-            mbf_min_limit: barcodeQrData.slice(158, 162),
-            mbf_low_limit: barcodeQrData.slice(162, 166),
-            mbf_standard: barcodeQrData.slice(166, 170),
-            mbf_top_limit: barcodeQrData.slice(170, 174),
-            mbf_max_limit: barcodeQrData.slice(174, 178),
-            bone_slim: barcodeQrData.slice(178, 182),
-            bone_slim_min: barcodeQrData.slice(182, 186),
-            bone_slim_low: barcodeQrData.slice(186, 190),
-            bone_slim_top: barcodeQrData.slice(190, 194),
-            bone_slim_max: barcodeQrData.slice(194, 198),
-            bmi: barcodeQrData.slice(198, 202),
-            bmi_min_limit: barcodeQrData.slice(202, 206),
-            bmi_low_limit: barcodeQrData.slice(206, 210),
-            bmi_top_limit: barcodeQrData.slice(210, 214),
-            bmi_topmax_limit: barcodeQrData.slice(214, 218),
-            bmi_max_limit: barcodeQrData.slice(218, 222),
-            pbf_rate: barcodeQrData.slice(222, 226),
-            pbf_min_limit: barcodeQrData.slice(226, 230),
-            pbf_low_limit: barcodeQrData.slice(230, 234),
-            pbf_top_limit: barcodeQrData.slice(234, 238),
-            pbf_topmax_limit: barcodeQrData.slice(238, 242),
-            pbf_max_limit: barcodeQrData.slice(242, 246),
-            whr_rate: barcodeQrData.slice(246, 249),
-            whr_min: barcodeQrData.slice(249, 252),
-            whr_low: barcodeQrData.slice(252, 255),
-            whr_top: barcodeQrData.slice(255, 258),
-            whr_max: barcodeQrData.slice(258, 261),
-            vsr: barcodeQrData.slice(261, 264),
-            VSR_min_limit: barcodeQrData.slice(264, 267),
-            VSR_low_limit: barcodeQrData.slice(267, 270),
-            VSR_top_limit: barcodeQrData.slice(270, 273),
-            VSR_max_limit: barcodeQrData.slice(273, 276),
-            whr_type: barcodeQrData.slice(276, 277),
-            whr_level: barcodeQrData.slice(277, 279),
-            vfa: barcodeQrData.slice(279, 282),
-            vfa_min: barcodeQrData.slice(282, 285),
-            vfa_low: barcodeQrData.slice(285, 288),
-            vfa_top: barcodeQrData.slice(288, 291),
-            vfa_max: barcodeQrData.slice(291, 294),
-            mvf_quantity: barcodeQrData.slice(294, 298),
-            msf_quantity: barcodeQrData.slice(298, 302),
-            sfm_top: barcodeQrData.slice(302, 306),
-            bcm_in_water: barcodeQrData.slice(306, 310),
-            bcm_out_water: barcodeQrData.slice(310, 314),
-            edema: barcodeQrData.slice(314, 317),
-            bujong_judge_min: barcodeQrData.slice(317, 320),
-            bujong_judge_low: barcodeQrData.slice(320, 323),
-            bujong_judge_top: barcodeQrData.slice(323, 326),
-            bujong_judge_max: barcodeQrData.slice(326, 330),
-            fat_type: barcodeQrData.slice(330, 332),
-            fat_xy: barcodeQrData.slice(332, 334),
-            body_age: barcodeQrData.slice(334, 337),
-            bmr: barcodeQrData.slice(337, 341),
-            calory: barcodeQrData.slice(341, 345),
-            mbf_control_step: barcodeQrData.slice(345, 346),
-            bcm: barcodeQrData.slice(346, 350),
-            weight_control_value: barcodeQrData.slice(350, 355),
-            muscle_control_value: barcodeQrData.slice(355, 360),
-            mbf_control_value: barcodeQrData.slice(360, 365),
-            lbm_control_value: barcodeQrData.slice(365, 370),
-            target_to_control: barcodeQrData.slice(370, 375),
-            control_guide_for_me: barcodeQrData.slice(375, 376),
-            week_time_for_calory: barcodeQrData.slice(376, 379),
-            fat: barcodeQrData.slice(379, 384),
-            fat_low: barcodeQrData.slice(384, 389),
-            fat_top: barcodeQrData.slice(389, 393),
-            waist_measurement: barcodeQrData.slice(393, 397),
-            impedance: barcodeQrData.slice(397, 401),
-            left_hand_impedance_5k: barcodeQrData.slice(401, 404),
-            right_hand_impedance_5k: barcodeQrData.slice(404, 407),
-            left_foot_impedance_5k: barcodeQrData.slice(407, 410),
-            right_foot_impedance_5k: barcodeQrData.slice(410, 413),
-            trunk_impedance_5k: barcodeQrData.slice(413, 416),
-            left_hand_impedance_50k: barcodeQrData.slice(416, 419),
-            right_hand_impedance_50k: barcodeQrData.slice(419, 422),
-            left_foot_impedance_50k: barcodeQrData.slice(422, 425),
-            right_foot_impedance_50k: barcodeQrData.slice(425, 428),
-            trunk_impedance_50k: barcodeQrData.slice(428, 431),
-            left_hand_impedance_250k: barcodeQrData.slice(431, 434),
-            right_hand_impedance_250k: barcodeQrData.slice(434, 437),
-            left_foot_impedance_250k: barcodeQrData.slice(437, 440),
-            right_foot_impedance_250k: barcodeQrData.slice(440, 443),
-            trunk_impedance_250k: barcodeQrData.slice(443, 446),
-            beauty_weight: barcodeQrData.slice(446, 450),
-            total_score: barcodeQrData.slice(450, 453),
-            pa_quantity: barcodeQrData.slice(453, 456),
-            slm_graph_percent: barcodeQrData.slice(456, 459),
-            mode: barcodeQrData.slice(459, 465),
-            protein_grade: barcodeQrData.slice(465, 466),
-            mineral_grade: barcodeQrData.slice(466, 467),
-            bujong_judge: barcodeQrData.slice(467, 468),
-            muscle_grade_i: barcodeQrData.slice(468, 473),
-            mbf_grade_i: barcodeQrData.slice(473, 478),
-            kiko_kids_state: barcodeQrData.slice(478, 479),
-            Kiko_fatXY: barcodeQrData.slice(479, 482),
-            weight_for_kiko: barcodeQrData.slice(482, 485),
-            height_for_kiko: barcodeQrData.slice(485, 488),
-            sys: barcodeQrData.slice(488, 491),
-            mean: barcodeQrData.slice(491, 494),
-            dias: barcodeQrData.slice(494, 497),
-            pulse: barcodeQrData.slice(497, 500),
-            prp: barcodeQrData.slice(500, 505),
-            sys_se: barcodeQrData.slice(505, 508),
-            mean_se: barcodeQrData.slice(508, 511),
-            dias_se: barcodeQrData.slice(511, 514),
-            bca_main_set: barcodeQrData.slice(514, 523),
-            dex_mode: barcodeQrData.slice(523, 524),
-            bmr_mode: barcodeQrData.slice(524, 525),
-            IsKgLb: barcodeQrData.slice(525, 526),
-            end_mark: barcodeQrData.slice(526, 527)
+    function getData(barcodeqr) {
+        var qrData = {
+            protocol_command: barcodeqr.slice(0, 2),
+            ap_version: barcodeqr.slice(2, 8),
+            received_date: barcodeqr.slice(8, 18),
+            id_number: barcodeqr.slice(18, 38),
+            sex: barcodeqr.slice(38, 39),
+            age: barcodeqr.slice(39, 42),
+            height: barcodeqr.slice(42, 46),
+            weight: barcodeqr.slice(46, 50),
+            weight_min_limit: barcodeqr.slice(50, 54),
+            weight_low_limit: barcodeqr.slice(54, 58),
+            std_weight: barcodeqr.slice(58, 62),
+            weight_top_limit: barcodeqr.slice(62, 66),
+            weight_max_limit: barcodeqr.slice(66, 70),
+            weight_recommend: barcodeqr.slice(70, 74),
+            lbm_quantity: barcodeqr.slice(74, 78),
+            lbm_low_limit: barcodeqr.slice(78, 82),
+            lbm_top_limit: barcodeqr.slice(82, 86),
+            muscle_quantity: barcodeqr.slice(86, 90),
+            muscle_min_limit: barcodeqr.slice(90, 94),
+            muscle_low_limit: barcodeqr.slice(94, 98),
+            muscle_standard: barcodeqr.slice(98, 102),
+            muscle_top_limit: barcodeqr.slice(102, 106),
+            muscle_max_limit: barcodeqr.slice(106, 110),
+            tbw_quantity: barcodeqr.slice(110, 114),
+            tbw_min_limit: barcodeqr.slice(114, 118),
+            tbw_low_limit: barcodeqr.slice(118, 122),
+            tbw_top_limit: barcodeqr.slice(122, 126),
+            tbw_max_limit: barcodeqr.slice(126, 130),
+            protein_quantity: barcodeqr.slice(130, 134),
+            protein_low_limit: barcodeqr.slice(134, 138),
+            protein_top_limit: barcodeqr.slice(138, 142),
+            mineral_quantity: barcodeqr.slice(142, 146),
+            mineral_low_limit: barcodeqr.slice(146, 150),
+            mineral_top_limit: barcodeqr.slice(150, 154),
+            mbf_quantity: barcodeqr.slice(154, 158),
+            mbf_min_limit: barcodeqr.slice(158, 162),
+            mbf_low_limit: barcodeqr.slice(162, 166),
+            mbf_standard: barcodeqr.slice(166, 170),
+            mbf_top_limit: barcodeqr.slice(170, 174),
+            mbf_max_limit: barcodeqr.slice(174, 178),
+            bone_slim: barcodeqr.slice(178, 182),
+            bone_slim_min: barcodeqr.slice(182, 186),
+            bone_slim_low: barcodeqr.slice(186, 190),
+            bone_slim_top: barcodeqr.slice(190, 194),
+            bone_slim_max: barcodeqr.slice(194, 198),
+            bmi: barcodeqr.slice(198, 202),
+            bmi_min_limit: barcodeqr.slice(202, 206),
+            bmi_low_limit: barcodeqr.slice(206, 210),
+            bmi_top_limit: barcodeqr.slice(210, 214),
+            bmi_topmax_limit: barcodeqr.slice(214, 218),
+            bmi_max_limit: barcodeqr.slice(218, 222),
+            pbf_rate: barcodeqr.slice(222, 226),
+            pbf_min_limit: barcodeqr.slice(226, 230),
+            pbf_low_limit: barcodeqr.slice(230, 234),
+            pbf_top_limit: barcodeqr.slice(234, 238),
+            pbf_topmax_limit: barcodeqr.slice(238, 242),
+            pbf_max_limit: barcodeqr.slice(242, 246),
+            whr_rate: barcodeqr.slice(246, 249),
+            whr_min: barcodeqr.slice(249, 252),
+            whr_low: barcodeqr.slice(252, 255),
+            whr_top: barcodeqr.slice(255, 258),
+            whr_max: barcodeqr.slice(258, 261),
+            vsr: barcodeqr.slice(261, 264),
+            VSR_min_limit: barcodeqr.slice(264, 267),
+            VSR_low_limit: barcodeqr.slice(267, 270),
+            VSR_top_limit: barcodeqr.slice(270, 273),
+            VSR_max_limit: barcodeqr.slice(273, 276),
+            whr_type: barcodeqr.slice(276, 277),
+            whr_level: barcodeqr.slice(277, 279),
+            vfa: barcodeqr.slice(279, 282),
+            vfa_min: barcodeqr.slice(282, 285),
+            vfa_low: barcodeqr.slice(285, 288),
+            vfa_top: barcodeqr.slice(288, 291),
+            vfa_max: barcodeqr.slice(291, 294),
+            mvf_quantity: barcodeqr.slice(294, 298),
+            msf_quantity: barcodeqr.slice(298, 302),
+            sfm_top: barcodeqr.slice(302, 306),
+            bcm_in_water: barcodeqr.slice(306, 310),
+            bcm_out_water: barcodeqr.slice(310, 314),
+            edema: barcodeqr.slice(314, 317),
+            bujong_judge_min: barcodeqr.slice(317, 320),
+            bujong_judge_low: barcodeqr.slice(320, 323),
+            bujong_judge_top: barcodeqr.slice(323, 326),
+            bujong_judge_max: barcodeqr.slice(326, 330),
+            fat_type: barcodeqr.slice(330, 332),
+            fat_xy: barcodeqr.slice(332, 334),
+            body_age: barcodeqr.slice(334, 337),
+            bmr: barcodeqr.slice(337, 341),
+            calory: barcodeqr.slice(341, 345),
+            mbf_control_step: barcodeqr.slice(345, 346),
+            bcm: barcodeqr.slice(346, 350),
+            weight_control_value: barcodeqr.slice(350, 355),
+            muscle_control_value: barcodeqr.slice(355, 360),
+            mbf_control_value: barcodeqr.slice(360, 365),
+            lbm_control_value: barcodeqr.slice(365, 370),
+            target_to_control: barcodeqr.slice(370, 375),
+            control_guide_for_me: barcodeqr.slice(375, 376),
+            week_time_for_calory: barcodeqr.slice(376, 379),
+            fat: barcodeqr.slice(379, 384),
+            fat_low: barcodeqr.slice(384, 389),
+            fat_top: barcodeqr.slice(389, 393),
+            waist_measurement: barcodeqr.slice(393, 397),
+            impedance: barcodeqr.slice(397, 401),
+            left_hand_impedance_5k: barcodeqr.slice(401, 404),
+            right_hand_impedance_5k: barcodeqr.slice(404, 407),
+            left_foot_impedance_5k: barcodeqr.slice(407, 410),
+            right_foot_impedance_5k: barcodeqr.slice(410, 413),
+            trunk_impedance_5k: barcodeqr.slice(413, 416),
+            left_hand_impedance_50k: barcodeqr.slice(416, 419),
+            right_hand_impedance_50k: barcodeqr.slice(419, 422),
+            left_foot_impedance_50k: barcodeqr.slice(422, 425),
+            right_foot_impedance_50k: barcodeqr.slice(425, 428),
+            trunk_impedance_50k: barcodeqr.slice(428, 431),
+            left_hand_impedance_250k: barcodeqr.slice(431, 434),
+            right_hand_impedance_250k: barcodeqr.slice(434, 437),
+            left_foot_impedance_250k: barcodeqr.slice(437, 440),
+            right_foot_impedance_250k: barcodeqr.slice(440, 443),
+            trunk_impedance_250k: barcodeqr.slice(443, 446),
+            beauty_weight: barcodeqr.slice(446, 450),
+            total_score: barcodeqr.slice(450, 453),
+            pa_quantity: barcodeqr.slice(453, 456),
+            slm_graph_percent: barcodeqr.slice(456, 459),
+            mode: barcodeqr.slice(459, 465),
+            protein_grade: barcodeqr.slice(465, 466),
+            mineral_grade: barcodeqr.slice(466, 467),
+            bujong_judge: barcodeqr.slice(467, 468),
+            muscle_grade_i: barcodeqr.slice(468, 473),
+            mbf_grade_i: barcodeqr.slice(473, 478),
+            kiko_kids_state: barcodeqr.slice(478, 479),
+            Kiko_fatXY: barcodeqr.slice(479, 482),
+            weight_for_kiko: barcodeqr.slice(482, 485),
+            height_for_kiko: barcodeqr.slice(485, 488),
+            sys: barcodeqr.slice(488, 491),
+            mean: barcodeqr.slice(491, 494),
+            dias: barcodeqr.slice(494, 497),
+            pulse: barcodeqr.slice(497, 500),
+            prp: barcodeqr.slice(500, 505),
+            sys_se: barcodeqr.slice(505, 508),
+            mean_se: barcodeqr.slice(508, 511),
+            dias_se: barcodeqr.slice(511, 514),
+            bca_main_set: barcodeqr.slice(514, 523),
+            dex_mode: barcodeqr.slice(523, 524),
+            bmr_mode: barcodeqr.slice(524, 525),
+            IsKgLb: barcodeqr.slice(525, 526),
+            end_mark: barcodeqr.slice(526, 527)
         }
 
-   // qrData.kidney_dialysis = qrData.mode.slice(4, 5);
+        return qrData;
+   // qr.kidney_dialysis = qr.mode.slice(4, 5);
 
     }
 
