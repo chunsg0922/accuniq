@@ -20,7 +20,7 @@ function login(){
         alert('로그인 성공');  
         var token = msg.token;
         var user = msg.user;
-        console.log(lo.getAllResponseHeader());
+        console.log(xhr.getAllResponseHeader());
         sessionStorage.setItem("user", JSON.stringify(user));
         
         $.ajax({
