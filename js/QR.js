@@ -64,7 +64,7 @@ $(function(){
             console.log(typeof(send));
             console.log(send);
             measureData(send);
-
+            break;
 
         } else {
             outputMessage.hidden = false;
