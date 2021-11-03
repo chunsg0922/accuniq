@@ -45,6 +45,7 @@ $(function(){
 
         // QR코드 인식에 성공한 경우
         if (code) {
+
             drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
@@ -53,14 +54,17 @@ $(function(){
             outputData.parentElement.hidden = false;
             var barcode = code.data; // 변수 barcode에 QR코드 URL 저장
 
-            var parse = barcode.split('bcadata='); // 변수 parse에 URL을 'bcadata=' 기준으로 파싱한다.
-            var urlData = parse[1]; // 변수 urlData에 잘리진 URL 데이터의 두번째 인덱스를 저장한다.
-            outputData.innerText = urlData;
-            var send = getData(urlData); // getData()로 데이터 파싱
-            console.log(typeof(send));
-            console.log(send);
-            measureData(send);
-            break;
+            if(code.data != null){
+                for(i=0; i< 1; i++){
+                    var parse = barcode.split('bcadata='); // 변수 parse에 URL을 'bcadata=' 기준으로 파싱한다.
+                    var urlData = parse[1]; // 변수 urlData에 잘리진 URL 데이터의 두번째 인덱스를 저장한다.
+                    outputData.innerText = urlData;
+                    var send = getData(urlData); // getData()로 데이터 파싱
+                    console.log(typeof(send));
+                    console.log(send);
+                    measureData(send);
+                }
+            }
 
         } else {
             outputMessage.hidden = false;
@@ -171,6 +175,7 @@ $(function(){
                     success: function(msg){
                         alert('데이터 전송 성공');
                         console.log(msg);
+                        sessionStorage.setItem("QRdata", JSON.string)
                         location.href = "data.html";
                     },
                     error : function(request, status, error){
