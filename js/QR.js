@@ -329,7 +329,8 @@ $(function(){
             IsKgLb: barcodeqr.slice(525, 526),
             end_mark: barcodeqr.slice(526, 527)
         }
-
+        
+        console.log(qrData);
         return qrData;
    // qr.kidney_dialysis = qr.mode.slice(4, 5);
 
