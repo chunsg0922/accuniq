@@ -3,7 +3,7 @@ $(function(){
     document.getElementById('nickname').innerHTML = user.nickname;
 
     $.ajax({
-        url: 'https://bca-proxy.accuniq.com/bodyComposition/findone?query={%22where%22:{%22owner%22:' + user._id + '}}',
+        url: 'https://bca-proxy.accuniq.com/bodyComposition/find?query={%22where%22:{%22owner%22:' + user._id + '}, "sort":{"date":-1}, "limit":1}',
             type: 'GET',
             dataType: 'JSON',
             async: false,
@@ -13,9 +13,11 @@ $(function(){
             },
             success: function(msg){
                 console.log('체성분 데이터 로딩 성공');
-                pp = msg.bodyComposition;
+                console.log(msg.bodyCompositions);
+                
+                pp = msg.bodyCompositions[0];
 
-                if(msg.bodyComposition == null){
+                if(msg.bodyCompositions.lenght == 0){
                     alert('측정 데이터가 존재하지 않습니다.');
                 }
     

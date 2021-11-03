@@ -37,7 +37,9 @@ function login(){
             },
             success: function(msg){
                 console.log('체성분 데이터 로딩 성공');
-                pp = msg.bodyComposition;
+                pp = msg.bodyCompositions[0];
+                console.log(msg.bodyCompositions);
+                console.log(pp);
 
                 if(msg.bodyComposition == null){
                     alert('측정 데이터가 존재하지 않습니다.');
