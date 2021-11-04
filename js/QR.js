@@ -173,10 +173,11 @@ $(function(){
                     },
                     dataType: 'JSON',
                     success: function(msg){
-                        console.log(msg);
+                        console.log(msg.bodyComposition);
+                        
                         alert('데이터 전송 성공');
 
-                        sessionStorage.setItem("QRdata", JSON.stringify(msg));
+                        sessionStorage.setItem("QRdata", JSON.stringify(msg.bodyComposition));
                         location.href = "data.html";
                     },
                     error : function(request, status, error){
