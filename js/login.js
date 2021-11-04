@@ -27,7 +27,7 @@ function login(){
         sessionStorage.setItem("login", JSON.stringify(pw));
         
         $.ajax({
-            url: 'https://bca-proxy.accuniq.com/bodyComposition/find?query={%22where%22:{%22owner%22:' + user._id + '}}',
+            url: 'https://bca-proxy.accuniq.com/bodyComposition/find?query={%22where%22:{%22owner%22:' + user._id + '}, "sort":{"_id":-1}, "limit":1}',
             type: 'GET',
             dataType: 'JSON',
             async: false,
