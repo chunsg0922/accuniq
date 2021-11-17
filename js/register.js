@@ -1,7 +1,7 @@
 
 function register(){
     $.ajax({
-        url: 'https://bca-app2.accuniq.com/register',
+        url: 'https://bca-proxy.accuniq.com/register',
     type: 'POST',
     xhrFields : {
         withCredentials: true
@@ -9,7 +9,7 @@ function register(){
     data: {
         username: $('#RegisterEmail').val(),
         email: $('#RegisterEmail').val(),
-        nickname: "아큐닉 회원",
+        nickname: "웹가입 회원",
         password: $('#RegisterPassword').val()
     },
     dataType: 'JSON',
