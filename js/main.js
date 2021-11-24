@@ -143,6 +143,86 @@ $(function(){
                 document.getElementById('show_bodyjudge').innerHTML = "운동선수형";
                 document.getElementById('show_tips').innerHTML = "체형 유지를 잘 하고 계십니다. 추천드리는 식단 및 운동이 없습니다.";
                 break;
+            case 76:
+                document.getElementById('show_bodyjudge').innerHTML = "마른 저지방";
+                document.getElementById('show_tips').innerHTML = "지방이 함유된 음식을 적절하게 섭취하시고, 가벼운 중량 운동을 추천드립니다.";
+                break;
+            case 77:
+                document.getElementById('show_bodyjudge').innerHTML = "마름";
+                document.getElementById('show_tips').innerHTML = "지방이 함유된 음식을 적절하게 섭취하시고, 가벼운 중량 운동을 추천드립니다.";
+                break;
+            case 78:
+                document.getElementById('show_bodyjudge').innerHTML = "저근육";
+                document.getElementById('show_tips').innerHTML = "단백질이 함유된 음식을 적절하게 섭취하시고, 가벼운 중량 운동을 추천드립니다.";
+                break;
+            case 79:
+                document.getElementById('show_bodyjudge').innerHTML = "마른비만 1단계";
+                document.getElementById('show_tips').innerHTML = "영양이 고루 갖춰진 식단과 함께 주3회, 20분 이상 운동을 추천드립니다.";
+                break;
+            case 80:
+                document.getElementById('show_bodyjudge').innerHTML = "마른비만 2단계";
+                document.getElementById('show_tips').innerHTML = "영양이 고루 갖춰진 식단과 함께 주3회, 20분 이상 운동을 추천드립니다.";
+                break;
+            case 81:
+                document.getElementById('show_bodyjudge').innerHTML = "표준 근육형";
+                document.getElementById('show_tips').innerHTML = "영양이 고루 갖춰진 식단과 함께 주3회, 20분 이상 운동을 추천드립니다.";
+                break;
+            case 82:
+                document.getElementById('show_bodyjudge').innerHTML = "표준";
+                document.getElementById('show_tips').innerHTML = "영양이 고루 갖춰진 식단과 함께 주3회, 20분 이상 운동을 추천드립니다.";
+                break;
+            case 83:
+                document.getElementById('show_bodyjudge').innerHTML = "과지방 1단계";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 84:
+                document.getElementById('show_bodyjudge').innerHTML = "과지방 2단계";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 85:
+                document.getElementById('show_bodyjudge').innerHTML = "과지방 3단계";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 86:
+                document.getElementById('show_bodyjudge').innerHTML = "근육형";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 87:
+                document.getElementById('show_bodyjudge').innerHTML = "근육형과체중 1단계";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 88:
+                document.getElementById('show_bodyjudge').innerHTML = "과체중";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 89:
+                document.getElementById('show_bodyjudge').innerHTML = "경도비만";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 90:
+                document.getElementById('show_bodyjudge').innerHTML = "비만";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 91:
+                document.getElementById('show_bodyjudge').innerHTML = "고도비만";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 92:
+                document.getElementById('show_bodyjudge').innerHTML = "비만";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 93:
+                document.getElementById('show_bodyjudge').innerHTML = "경도비만";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 94:
+                document.getElementById('show_bodyjudge').innerHTML = "근육형과체중 2단계";
+                document.getElementById('show_tips').innerHTML = "적절한 식단 조절과 함께 주 4회 이상, 1회마다 30분 이상의 유산소 운동을 권장드립니다.";
+                break;
+            case 95:
+                document.getElementById('show_bodyjudge').innerHTML = "운동선수형";
+                document.getElementById('show_tips').innerHTML = "체형 유지를 잘 하고 계십니다. 추천드리는 식단 및 운동이 없습니다.";
+                break;
         }
 
         /****************
