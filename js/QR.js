@@ -158,7 +158,7 @@ $(function(){
                         fatMax : parseInt(qr[39]) / 10,
                         fatLow : parseInt(qr[36]) / 10,
                         fatTop : parseInt(qr[38]) / 10,
-                        bodyJudge : parseInt(qr[84]) + 75, // 체형판정
+                        bodyJudge : parseInt(qr[84]), // 체형판정
                         bodyAge : parseInt(qr[86]), // 신체연령
                         showBmr : parseInt(qr[87]), // 기초대사량
                         showDayCal : parseInt(qr[88]), // 일일 필요열량
